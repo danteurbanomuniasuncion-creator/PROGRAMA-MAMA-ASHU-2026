@@ -106,6 +106,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
+            min-height: 75vh;
             padding: 20px;
             position: relative;
         }
@@ -361,87 +362,96 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const pageFlip = new St.PageFlip(document.getElementById('flipbook'), {
-                width: 450,
-                height: 600,
-                size: "stretch",
-                minWidth: 300,
-                maxWidth: 600,
-                minHeight: 400,
-                maxHeight: 800,
-                drawShadow: true,
-                showCover: true,
-                usePortrait: true,
-                maxShadowOpacity: 0.8,
-                mobileScrollSupport: true
-            });
+        window.addEventListener('load', function() {
+            try {
+                const flipbookElement = document.getElementById('flipbook');
+                if (!flipbookElement) return;
 
-            pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+                const pageFlip = new St.PageFlip(flipbookElement, {
+                    width: 450,
+                    height: 600,
+                    size: "stretch",
+                    minWidth: 300,
+                    maxWidth: 600,
+                    minHeight: 400,
+                    maxHeight: 800,
+                    drawShadow: true,
+                    showCover: true,
+                    usePortrait: true,
+                    maxShadowOpacity: 0.8,
+                    mobileScrollSupport: true
+                });
 
-            const bgMusic = document.getElementById('bgMusic');
-            const btnAudioToggle = document.getElementById('btnAudioToggle');
-            const audioIcon = document.getElementById('audioIcon');
-            const audioStatus = document.getElementById('audioStatus');
-            const startOverlay = document.getElementById('startOverlay');
-            const btnStart = document.getElementById('btnStart');
-            const btnPrev = document.getElementById('btnPrev');
-            const btnNext = document.getElementById('btnNext');
-            const btnFullscreen = document.getElementById('btnFullscreen');
-            const pageIndicator = document.getElementById('pageIndicator');
+                pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
-            let isPlaying = false;
+                const bgMusic = document.getElementById('bgMusic');
+                const btnAudioToggle = document.getElementById('btnAudioToggle');
+                const audioIcon = document.getElementById('audioIcon');
+                const audioStatus = document.getElementById('audioStatus');
+                const startOverlay = document.getElementById('startOverlay');
+                const btnStart = document.getElementById('btnStart');
+                const btnPrev = document.getElementById('btnPrev');
+                const btnNext = document.getElementById('btnNext');
+                const btnFullscreen = document.getElementById('btnFullscreen');
+                const pageIndicator = document.getElementById('pageIndicator');
 
-            function toggleAudio() {
-                if (isPlaying) {
-                    bgMusic.pause();
-                    audioIcon.className = 'fa-solid fa-volume-xmark';
-                    audioStatus.textContent = 'Pausado';
-                    isPlaying = false;
-                } else {
-                    bgMusic.play().then(() => {
-                        audioIcon.className = 'fa-solid fa-volume-high';
-                        audioStatus.textContent = 'Reproduciendo';
-                        isPlaying = true;
-                    }).catch(err => {
-                        console.log('Error de audio:', err);
-                    });
-                }
-            }
+                let isPlaying = false;
 
-            btnStart.addEventListener('click', function() {
-                startOverlay.style.opacity = '0';
-                setTimeout(() => {
-                    startOverlay.style.display = 'none';
-                }, 500);
-                toggleAudio();
-            });
-
-            btnAudioToggle.addEventListener('click', toggleAudio);
-
-            btnPrev.addEventListener('click', () => pageFlip.flipPrev());
-            btnNext.addEventListener('click', () => pageFlip.flipNext());
-
-            pageFlip.on('flip', (e) => {
-                const current = e.data + 1;
-                const total = pageFlip.getPageCount();
-                pageIndicator.textContent = `Página ${current} de ${total}`;
-            });
-
-            pageFlip.on('init', () => {
-                const total = pageFlip.getPageCount();
-                pageIndicator.textContent = `Página 1 de ${total}`;
-            });
-
-            btnFullscreen.addEventListener('click', () => {
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen();
-                } else {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
+                function toggleAudio() {
+                    if (!bgMusic) return;
+                    if (isPlaying) {
+                        bgMusic.pause();
+                        if (audioIcon) audioIcon.className = 'fa-solid fa-volume-xmark';
+                        if (audioStatus) audioStatus.textContent = 'Pausado';
+                        isPlaying = false;
+                    } else {
+                        bgMusic.play().then(() => {
+                            if (audioIcon) audioIcon.className = 'fa-solid fa-volume-high';
+                            if (audioStatus) audioStatus.textContent = 'Reproduciendo';
+                            isPlaying = true;
+                        }).catch(err => console.log('Audio no iniciado:', err));
                     }
                 }
-            });
+
+                if (btnStart) {
+                    btnStart.addEventListener('click', function() {
+                        if (startOverlay) {
+                            startOverlay.style.opacity = '0';
+                            setTimeout(() => {
+                                startOverlay.style.display = 'none';
+                            }, 500);
+                        }
+                        toggleAudio();
+                    });
+                }
+
+                if (btnAudioToggle) btnAudioToggle.addEventListener('click', toggleAudio);
+                if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
+                if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
+
+                pageFlip.on('flip', (e) => {
+                    const current = e.data + 1;
+                    const total = pageFlip.getPageCount();
+                    if (pageIndicator) pageIndicator.textContent = `Página ${current} de ${total}`;
+                });
+
+                pageFlip.on('init', () => {
+                    const total = pageFlip.getPageCount();
+                    if (pageIndicator) pageIndicator.textContent = `Página 1 de ${total}`;
+                });
+
+                if (btnFullscreen) {
+                    btnFullscreen.addEventListener('click', () => {
+                        if (!document.fullscreenElement) {
+                            document.documentElement.requestFullscreen();
+                        } else if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error("Error al iniciar flipbook:", err);
+            }
         });
     </script>
 </body>
