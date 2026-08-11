@@ -265,14 +265,47 @@
 <body>
 
     <!-- Overlay de Bienvenida -->
-    <div class="start-overlay" id="startOverlay">
-        <div class="start-card">
-            <i class="fa-solid fa-book-open-reader main-icon"></i>
-            <h2>Revista Digital Virtual</h2>
-            <p>Haz clic para ingresar a la revista y activar la música de fondo.</p>
-            <button class="start-btn" id="btnStart">
-                <i class="fa-solid fa-play"></i> Abrir Revista
-            </button>
+   <!-- Contenedor del Libro -->
+    <div class="magazine-container">
+        <div id="flipbook">
+            <!-- Portada Frontal -->
+            <div class="page page-cover" data-density="hard">
+                <div class="page-content">
+                    <h1>PROGRAMA OFICIAL</h1>
+                    <p>Mama Ashu 2026</p>
+                </div>
+            </div>
+
+            <!-- Las 21 Páginas del Programa -->
+            <div class="page" style="background-image: url('paginas/pagina_01.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_02.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_03.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_04.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_05.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_06.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_07.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_08.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_09.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_10.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_11.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_12.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_13.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_14.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_15.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_16.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_17.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_18.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_19.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_20.JPG');"></div>
+            <div class="page" style="background-image: url('paginas/pagina_21.JPG');"></div>
+
+            <!-- Contraportada -->
+            <div class="page page-cover" data-density="hard">
+                <div class="page-content">
+                    <h2>¡MAMA ASHU 2026!</h2>
+                    <p>Asunción - Chacas</p>
+                </div>
+            </div>
         </div>
     </div>
 
