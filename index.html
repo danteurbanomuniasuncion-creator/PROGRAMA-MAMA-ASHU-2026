@@ -116,12 +116,17 @@
             margin: 0 auto;
         }
 
-        /* Páginas */
+        /* Estilo de Páginas e Imágenes */
         .page {
             background-color: #ffffff;
-            background-size: cover;
-            background-position: center;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .page-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .page-cover {
@@ -279,7 +284,7 @@
 
     <!-- Elemento de Audio -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="musica.mp3" type="audio/mpeg">
+        <source src="./musica.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Encabezado -->
@@ -312,27 +317,27 @@
             </div>
 
             <!-- Las 21 Páginas del Programa -->
-            <div class="page" style="background-image: url('paginas/pagina_01.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_02.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_03.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_04.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_05.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_06.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_07.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_08.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_09.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_10.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_11.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_12.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_13.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_14.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_15.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_16.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_17.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_18.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_19.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_20.JPG');"></div>
-            <div class="page" style="background-image: url('paginas/pagina_21.JPG');"></div>
+            <div class="page"><img src="./paginas/pagina_01.JPG" class="page-img" alt="Página 1"></div>
+            <div class="page"><img src="./paginas/pagina_02.JPG" class="page-img" alt="Página 2"></div>
+            <div class="page"><img src="./paginas/pagina_03.JPG" class="page-img" alt="Página 3"></div>
+            <div class="page"><img src="./paginas/pagina_04.JPG" class="page-img" alt="Página 4"></div>
+            <div class="page"><img src="./paginas/pagina_05.JPG" class="page-img" alt="Página 5"></div>
+            <div class="page"><img src="./paginas/pagina_06.JPG" class="page-img" alt="Página 6"></div>
+            <div class="page"><img src="./paginas/pagina_07.JPG" class="page-img" alt="Página 7"></div>
+            <div class="page"><img src="./paginas/pagina_08.JPG" class="page-img" alt="Página 8"></div>
+            <div class="page"><img src="./paginas/pagina_09.JPG" class="page-img" alt="Página 9"></div>
+            <div class="page"><img src="./paginas/pagina_10.JPG" class="page-img" alt="Página 10"></div>
+            <div class="page"><img src="./paginas/pagina_11.JPG" class="page-img" alt="Página 11"></div>
+            <div class="page"><img src="./paginas/pagina_12.JPG" class="page-img" alt="Página 12"></div>
+            <div class="page"><img src="./paginas/pagina_13.JPG" class="page-img" alt="Página 13"></div>
+            <div class="page"><img src="./paginas/pagina_14.JPG" class="page-img" alt="Página 14"></div>
+            <div class="page"><img src="./paginas/pagina_15.JPG" class="page-img" alt="Página 15"></div>
+            <div class="page"><img src="./paginas/pagina_16.JPG" class="page-img" alt="Página 16"></div>
+            <div class="page"><img src="./paginas/pagina_17.JPG" class="page-img" alt="Página 17"></div>
+            <div class="page"><img src="./paginas/pagina_18.JPG" class="page-img" alt="Página 18"></div>
+            <div class="page"><img src="./paginas/pagina_19.JPG" class="page-img" alt="Página 19"></div>
+            <div class="page"><img src="./paginas/pagina_20.JPG" class="page-img" alt="Página 20"></div>
+            <div class="page"><img src="./paginas/pagina_21.JPG" class="page-img" alt="Página 21"></div>
 
             <!-- Contraportada -->
             <div class="page page-cover" data-density="hard">
