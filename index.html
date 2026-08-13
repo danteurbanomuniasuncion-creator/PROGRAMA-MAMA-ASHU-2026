@@ -7,9 +7,10 @@
     <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Script de StPageFlip vía CDN -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+    
     <style>
         * {
             box-sizing: border-box;
@@ -29,14 +30,14 @@
             overflow-x: hidden;
         }
 
-        /* Encabezado */
+        /* Encabezado Simplificado */
         header {
             width: 100%;
             padding: 15px 30px;
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             z-index: 10;
@@ -47,56 +48,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #f8fafc;
         }
 
         .logo-title i {
-            color: #6366f1;
-        }
-
-        /* Reproductor de Audio */
-        .audio-control {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .audio-btn {
-            background: #6366f1;
-            border: none;
-            color: white;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
-        }
-
-        .audio-btn:hover {
-            background: #4f46e5;
-            transform: scale(1.05);
-        }
-
-        .audio-info {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .audio-title {
-            font-weight: 600;
-            color: #fff;
+            color: #fbbf24;
         }
 
         /* Contenedor Principal */
@@ -129,31 +87,72 @@
             display: block;
         }
 
+        /* DISEÑO DE LA TAPA PRINCIPAL Y CONTRAPORTADA */
         .page-cover {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
             color: white;
+            position: relative;
         }
 
-        .page-content {
+        .cover-border {
             width: 100%;
             height: 100%;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 30px;
             text-align: center;
-            color: #f8fafc;
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            outline: 1px solid rgba(251, 191, 36, 0.2);
+            outline-offset: -10px;
         }
 
-        .page-content h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        .cover-header {
+            margin-top: 15px;
         }
 
-        .page-content p {
-            color: #c7d2fe;
-            font-size: 1rem;
+        .cover-tag {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .cover-emblem {
+            font-size: 3rem;
+            color: #fbbf24;
+            margin: 20px 0;
+            filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.4));
+        }
+
+        .cover-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            letter-spacing: 1px;
+        }
+
+        .cover-footer {
+            margin-bottom: 15px;
+        }
+
+        .cover-location {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: 400;
+            letter-spacing: 2px;
         }
 
         /* Barra de Controles Inferior */
@@ -198,89 +197,9 @@
             min-width: 120px;
             text-align: center;
         }
-
-        /* Overlay de Bienvenida */
-        .start-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            transition: opacity 0.5s ease;
-        }
-
-        .start-card {
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            max-width: 440px;
-            width: 90%;
-        }
-
-        .start-card i.main-icon {
-            font-size: 3.5rem;
-            color: #818cf8;
-            margin-bottom: 20px;
-        }
-
-        .start-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: #f8fafc;
-        }
-
-        .start-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 28px;
-            line-height: 1.5;
-        }
-
-        .start-btn {
-            background: #6366f1;
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
-
-        .start-btn:hover {
-            background: #4f46e5;
-            transform: translateY(-2px);
-        }
     </style>
 </head>
 <body>
-
-    <!-- Overlay de Bienvenida -->
-    <div class="start-overlay" id="startOverlay">
-        <div class="start-card">
-            <i class="fa-solid fa-book-open main-icon"></i>
-            <h2>¡Bienvenido al Programa General!</h2>
-            <p>Mama Ashu 2026 - Asunción, Chacas</p>
-            <button class="start-btn" id="btnStart">
-                <i class="fa-solid fa-play"></i> Abrir Revista
-            </button>
-        </div>
-    </div>
 
     <!-- Elemento de Audio -->
     <audio id="bgMusic" loop preload="auto">
@@ -290,29 +209,32 @@
     <!-- Encabezado -->
     <header>
         <div class="logo-title">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Programa Mama Ashu 2026</span>
-        </div>
-
-        <div class="audio-control">
-            <button class="audio-btn" id="btnAudioToggle" title="Reproducir / Pausar Música">
-                <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
-            </button>
-            <div class="audio-info">
-                <span class="audio-title">Música de Fondo</span>
-                <span id="audioStatus" style="font-size: 0.75rem; color: #94a3b8;">Pausado</span>
-            </div>
+            <i class="fa-solid fa-crown"></i>
+            <span>Programa Oficial Mama Ashu 2026</span>
         </div>
     </header>
 
     <!-- Contenedor del Libro -->
     <div class="magazine-container">
         <div id="flipbook">
-            <!-- Portada Frontal -->
+            
+            <!-- TAPA PRINCIPAL (PORTADA) -->
+            <!-- Nota: Si prefieres usar una imagen en lugar de este diseño HTML, borra el div "cover-border" y pon: <img src="./paginas/portada.JPG" class="page-img"> -->
             <div class="page page-cover" data-density="hard">
-                <div class="page-content">
-                    <h1>PROGRAMA GENERAL</h1>
-                    <p>Mama Ashu 2026</p>
+                <div class="cover-border">
+                    <div class="cover-header">
+                        <p class="cover-tag">Programa Oficial</p>
+                        <h1 class="cover-title">FIESTA PATRONAL</h1>
+                    </div>
+                    
+                    <div class="cover-emblem">
+                        <i class="fa-solid fa-church"></i>
+                    </div>
+
+                    <div class="cover-footer">
+                        <h2 class="cover-subtitle">MAMA ASHU 2026</h2>
+                        <p class="cover-location">ASUNCIÓN - CHACAS</p>
+                    </div>
                 </div>
             </div>
 
@@ -339,13 +261,22 @@
             <div class="page"><img src="./paginas/pagina_20.JPG" class="page-img" alt="Página 20"></div>
             <div class="page"><img src="./paginas/pagina_21.JPG" class="page-img" alt="Página 21"></div>
 
-            <!-- Contraportada -->
+            <!-- CONTRAPORTADA -->
             <div class="page page-cover" data-density="hard">
-                <div class="page-content">
-                    <h2>¡MAMA ASHU 2026!</h2>
-                    <p>Asunción - Chacas</p>
+                <div class="cover-border">
+                    <div class="cover-header">
+                        <p class="cover-tag">¡Viva la Virgen de la Asunción!</p>
+                    </div>
+                    <div class="cover-emblem">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="cover-footer">
+                        <h2 class="cover-subtitle">MAMA ASHU 2026</h2>
+                        <p class="cover-location">Chacas - Ancash - Perú</p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -390,47 +321,37 @@
                 pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
                 const bgMusic = document.getElementById('bgMusic');
-                const btnAudioToggle = document.getElementById('btnAudioToggle');
-                const audioIcon = document.getElementById('audioIcon');
-                const audioStatus = document.getElementById('audioStatus');
-                const startOverlay = document.getElementById('startOverlay');
-                const btnStart = document.getElementById('btnStart');
                 const btnPrev = document.getElementById('btnPrev');
                 const btnNext = document.getElementById('btnNext');
                 const btnFullscreen = document.getElementById('btnFullscreen');
                 const pageIndicator = document.getElementById('pageIndicator');
 
-                let isPlaying = false;
-
-                function toggleAudio() {
-                    if (!bgMusic) return;
-                    if (isPlaying) {
-                        bgMusic.pause();
-                        if (audioIcon) audioIcon.className = 'fa-solid fa-volume-xmark';
-                        if (audioStatus) audioStatus.textContent = 'Pausado';
-                        isPlaying = false;
-                    } else {
+                // Lógica de Audio Automático
+                function startAudio() {
+                    if (bgMusic && bgMusic.paused) {
                         bgMusic.play().then(() => {
-                            if (audioIcon) audioIcon.className = 'fa-solid fa-volume-high';
-                            if (audioStatus) audioStatus.textContent = 'Reproduciendo';
-                            isPlaying = true;
-                        }).catch(err => console.log('Audio no iniciado:', err));
+                            // Audio iniciado, eliminamos los escuchadores globales
+                            removeAudioListeners();
+                        }).catch(() => {
+                            // Si el navegador bloquea la reproducción sin interacción previa,
+                            // esperará al primer clic/toque del usuario.
+                        });
                     }
                 }
 
-                if (btnStart) {
-                    btnStart.addEventListener('click', function() {
-                        if (startOverlay) {
-                            startOverlay.style.opacity = '0';
-                            setTimeout(() => {
-                                startOverlay.style.display = 'none';
-                            }, 500);
-                        }
-                        toggleAudio();
-                    });
+                function removeAudioListeners() {
+                    document.removeEventListener('click', startAudio);
+                    document.removeEventListener('touchstart', startAudio);
                 }
 
-                if (btnAudioToggle) btnAudioToggle.addEventListener('click', toggleAudio);
+                // Intenta reproducir de inmediato al cargar
+                startAudio();
+
+                // Si se bloquea, se reproduce con el primer clic o toque en cualquier parte de la pantalla
+                document.addEventListener('click', startAudio);
+                document.addEventListener('touchstart', startAudio);
+
+                // Controles de Navegación del Flipbook
                 if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
                 if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
 
